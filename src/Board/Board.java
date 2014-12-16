@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by brianbenavides on 12/9/14.
  */
-public class Board {
+public class Board extends JPanel{
 
     private Space[][] boardSpaces;
     private int boardRows;
@@ -15,17 +15,26 @@ public class Board {
 
     public Board(int rows, int columns)
     {
-        boardSpaces = new Space[rows][columns];
-        initializeBoard(rows, columns);
+        //boardSpaces = new Space[rows][columns];
+        //initializeBoard(rows, columns);
     }
 
-    private void  initializeBoard(int x, int y)
+    public void paint(Graphics g)
+    {
+        super.paint(g);
+
+        g.setColor(Color.CYAN);
+        g.fillRect(110, 110, 5, 5);
+    }
+
+    private void initializeBoard(int x, int y)
     {
         for(int i = 0; i < x; i++)
         {
             for(int j = 0; j < y; j++)
             {
                 boardSpaces[i][j] = new Space(x, y);
+                //this.add(boardSpaces[i][j]);
             }
         }
     }
@@ -38,9 +47,18 @@ public class Board {
         }
         else
         {
-            return boardSpaces[row][column];
+            return boardSpaces[row-1][column-1];
         }
     }
 
+    public int getBoardRows()
+    {
+        return boardRows;
+    }
+
+    public int getBoardColumns()
+    {
+        return boardColumns;
+    }
 }
 

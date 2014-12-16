@@ -1,29 +1,34 @@
+import Board.PlayArea;
+
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by PhilectorIV on 12/14/14.
  */
-public class MainWindow extends JFrame {
-
-    public static String Title;
-
-    public MainWindow(String Title){
-        this.Title = Title;
+public class MainWindow extends JFrame
+{
+    public MainWindow(String title)
+    {
+        this.setTitle(title);
+        this.getContentPane().setLayout(new BorderLayout());
+        initChildren();
     }
 
+    private void initChildren()
+    {
 
-    public static void main(String args[]){
+        PlayArea pa = new PlayArea();
+        pa.setSize(620, 800);
+        //this.getContentPane().add(pa);
+        this.getContentPane().add(pa, BorderLayout.WEST);
 
-        MainWindow mw = new MainWindow("TheChess");
 
-        mw.setSize(800, 800);
-        mw.setVisible(true);
-        mw.setLocationRelativeTo(null);
-        mw.setResizable(false);
-        mw.setTitle(Title);
+//        PlayArea pa2 = new PlayArea();
+//        pa2.setSize(300,500);
+//        this.getContentPane().add(pa2).setLocation(0,0);
+
+        //GameControl gc = new GameControl();
+        //this.getContentPane().add(gc, BorderLayout.EAST);
     }
-
-
-
-
 }
